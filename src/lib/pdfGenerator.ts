@@ -5,7 +5,7 @@ import {
   SixWeekPeriod,
 } from "./types";
 import { formatDate } from "./database";
-import { BaseDirectory, readFile } from "@tauri-apps/plugin-fs";
+import { readFile } from "@tauri-apps/plugin-fs";
 import { resolveResource } from "@tauri-apps/api/path";
 import fontkit from "@pdf-lib/fontkit";
 
@@ -205,7 +205,7 @@ export async function generateStudentAccommodationPDF(
         });
 
         // Accommodation column headers for this chunk
-        accommodationChunk.forEach((acc, index) => {
+        accommodationChunk.forEach((_, index) => {
           const colX =
             margin + dateColumnWidth + index * accommodationColumnWidth;
 

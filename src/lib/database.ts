@@ -3,7 +3,6 @@ import {
   Class,
   Student,
   Accommodation,
-  ClassStudent,
   StudentWithAccommodations,
   ClassSummary,
   SixWeekPeriod,
@@ -30,7 +29,7 @@ export async function createClass(
     "INSERT INTO classes (name, subject, period, year) VALUES ($1, $2, $3, $4)",
     [classData.name, classData.subject, classData.period, classData.year],
   );
-  return result.lastInsertId;
+  return result.lastInsertId!;
 }
 
 export async function getClasses(): Promise<Class[]> {
@@ -79,7 +78,7 @@ export async function createStudent(
       student.plan_type,
     ],
   );
-  return result.lastInsertId;
+  return result.lastInsertId!;
 }
 
 export async function getStudents(): Promise<Student[]> {
@@ -133,7 +132,7 @@ export async function createAccommodation(
       accommodation.category,
     ],
   );
-  return result.lastInsertId;
+  return result.lastInsertId!;
 }
 
 export async function getAccommodations(
@@ -177,7 +176,7 @@ export async function addStudentToClass(
     "INSERT INTO class_students (class_id, student_id) VALUES ($1, $2)",
     [classId, studentId],
   );
-  return result.lastInsertId;
+  return result.lastInsertId!;
 }
 
 export async function removeStudentFromClass(
@@ -247,7 +246,7 @@ export async function createSixWeekPeriod(
     "INSERT INTO six_week_periods (name, start_date, end_date, year) VALUES ($1, $2, $3, $4)",
     [period.name, period.start_date, period.end_date, period.year],
   );
-  return result.lastInsertId;
+  return result.lastInsertId!;
 }
 
 export async function getSixWeekPeriods(
@@ -449,7 +448,6 @@ export function exportToCSV(data: ClassSummary): string {
 
 // Export tracking data to CSV
 export function exportTrackingToCSV(
-  classData: Class,
   students: StudentWithAccommodationsTracking[],
   dates: Date[],
 ): string {

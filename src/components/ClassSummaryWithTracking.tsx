@@ -1,12 +1,5 @@
 import { useState, useEffect } from "react";
-import {
-  Download,
-  Plus,
-  X,
-  ChevronLeft,
-  ChevronRight,
-  FileText,
-} from "lucide-react";
+import { Plus, X, ChevronLeft, ChevronRight, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
